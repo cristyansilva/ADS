@@ -1,0 +1,125 @@
+body {
+  background-color: #0f1a34;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.quiz-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #1b2a47;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00f7ff3b;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.question-header {
+  position: relative;
+  border: 2px solid #00e0ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#question-number {
+  background: #00e0ff;
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-weight: bold;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  color: #000;
+}
+
+#question-text {
+  font-size: 18px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.options button {
+  background-color: #233659;
+  color: #fff;
+  border: 2px solid transparent;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.options button span {
+  background-color: #00e0ff;
+  color: #000;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 6px 10px;
+  margin-right: 10px;
+}
+
+.options button:hover {
+  border-color: #00e0ff;
+  background-color: #2f4a75;
+}
+
+button.correct {
+  background-color: #2ecc71 !important;
+  color: white;
+}
+
+button.incorrect {
+  background-color: #e74c3c !important;
+  color: white;
+}
+
+#next, #restart {
+  background-color: #00e0ff;
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#next:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0f1a34;
+  color: white;
+  margin-top: 40px;
+}
+
+footer .creditos a {
+  color: #00e0ff;
+  text-decoration: none;
+}

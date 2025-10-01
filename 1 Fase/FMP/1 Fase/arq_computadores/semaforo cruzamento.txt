@@ -1,0 +1,54 @@
+int vermelho = 16;  // Semáforo 1 - vermelho
+int amarelo  = 5;   // Semáforo 1 - amarelo
+int verde    = 4;   // Semáforo 1 - verde
+
+int vermelho1 = 0;  // Semáforo 2 - vermelho
+int amarelo1  = 12; // Semáforo 2 - amarelo
+int verde1    = 14; // Semáforo 2 - verde
+
+void setup() {
+  pinMode(vermelho, OUTPUT);
+  pinMode(amarelo, OUTPUT);
+  pinMode(verde, OUTPUT);
+  
+  pinMode(vermelho1, OUTPUT);
+  pinMode(amarelo1, OUTPUT);
+  pinMode(verde1, OUTPUT);
+}
+
+void loop() {
+  // Etapa 1: Semáforo 1 VERDE, Semáforo 2 VERMELHO
+  digitalWrite(vermelho, LOW);
+  digitalWrite(amarelo, LOW);
+  digitalWrite(verde, HIGH);
+
+  digitalWrite(vermelho1, HIGH);
+  digitalWrite(amarelo1, LOW);
+  digitalWrite(verde1, LOW);
+  delay(5000);
+
+  // Etapa 2: Semáforo 1 AMARELO, Semáforo 2 continua VERMELHO
+  digitalWrite(verde, LOW);
+  digitalWrite(amarelo, HIGH);
+  delay(2000);
+
+  // Etapa 3: Semáforo 1 VERMELHO, Semáforo 2 ainda VERMELHO por segurança
+  digitalWrite(amarelo, LOW);
+  digitalWrite(vermelho, HIGH);
+  delay(1000);
+
+  // Etapa 4: Semáforo 1 VERMELHO, Semáforo 2 VERDE
+  digitalWrite(vermelho1, LOW);
+  digitalWrite(verde1, HIGH);
+  delay(5000);
+
+  // Etapa 5: Semáforo 1 continua VERMELHO, Semáforo 2 AMARELO
+  digitalWrite(verde1, LOW);
+  digitalWrite(amarelo1, HIGH);
+  delay(2000);
+
+  // Etapa 6: Ambos VERMELHOS por segurança
+  digitalWrite(amarelo1, LOW);
+  digitalWrite(vermelho1, HIGH);
+  delay(1000);
+}

@@ -1,0 +1,125 @@
+//Inicio do código
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h> // // biblioteca para o display i2c 1602 lcd
+#include <Keypad.h> // A biblioteca para o teclado matricial 4x4
+//LiquidCrystal_I2C lcd(0x3F,16,2); // gets the lcd
+const byte linhas = 4; // A quantidade de linhas do teclado
+const byte colunas = 4; // A quantidade de colunas do teclado
+char tecla[linhas][colunas] = { // Define linhas e colunas
+{'1','2','3','A'}, // define os digitos do teclado
+{'4','5','6','+'},
+{'7','8','9','-'},
+{'*','0','=','/'}
+};
+byte pinlinhas[linhas] = {16,5,4,0}; // os pinos para conectar no teclado
+byte pincolunas[colunas] = {2,14,12,13}; // os pinos para conectar no teclado
+Keypad myKeypad( makeKeymap(tecla), pinlinhas, pincolunas, linhas, colunas); // obtém os dados do teclado
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+char Key;
+String X,Y;
+byte z=0;
+char a;
+long dado1,dado2,rpt1;
+double dado3,dado4,rpt2;
+void setup()
+{
+  Wire.begin(4, 5);  // Inicializa o I2C nos pinos padrão do ESP8266
+
+  lcd.init();       // Inicializa o LCD
+  lcd.backlight();  // Liga a luz de fundo do LCD
+
+  lcd.setCursor(2,0);
+  lcd.print("Eletronica");
+  lcd.setCursor(3,1);
+  lcd.print("Calculadora");
+  delay(2500);
+  lcd.clear();
+
+  lcd.setCursor(1, 0);
+  lcd.print("* = x");
+  lcd.setCursor(10, 0);
+  lcd.print("B = +");
+  lcd.setCursor(1, 1);
+  lcd.print("C = -");
+  lcd.setCursor(10, 1);
+  lcd.print("D = /");
+  delay(4000);
+  lcd.clear();
+
+  lcd.setCursor(4, 0);
+  lcd.print("A = delet");
+  lcd.setCursor(4, 1);
+  lcd.print("# = igual");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop()
+{
+char key = myKeypad.getKey();
+if (key=='0'||key=='1'||key=='2'||key=='3'||key=='4'||key=='5'||key=='6'||key=='7'||key=='8'||key=='9'){
+if(z==0){
+lcd.print(key);
+X+=key;
+dado1=X.toInt();
+}
+else if(z==1){
+lcd.print(key);
+Y+=key;
+dado2=Y.toInt();
+}
+}
+if(key=='A'){
+Y="";
+X="";
+dado1=0;
+dado2=0;
+dado3=0;
+dado4=0;
+z=0;
+rpt1=0;
+rpt2=0;
+lcd.clear();
+}
+else if((key=='=')&& (a=='+'))
+{
+z++;
+lcd.setCursor(0,1);
+lcd.print("=");
+rpt1=(dado1+dado2);
+lcd.setCursor(1,1);
+lcd.print(rpt1);
+}
+else if(key=='=' && a=='-'){
+z++;
+lcd.setCursor(0,1);
+lcd.print("=");
+rpt1=dado1-dado2;
+lcd.setCursor(1,1);
+lcd.print(rpt1);
+}
+else if(key=='='&& a=='*'){
+z++;
+lcd.setCursor(0,1);
+lcd.print("=");
+rpt1=dado1*dado2;
+lcd.setCursor(1,1);
+lcd.print(rpt1);
+}
+else if(key=='='&& a=='/'){
+z++;
+lcd.setCursor(0,1);
+lcd.print("=");
+dado3=dado1;
+dado4=dado2;
+lcd.print("ANS=");
+rpt2=(dado3/dado4);
+lcd.setCursor(1,1);
+lcd.print(rpt2);
+}
+else if((key=='+'||key=='-'||key=='*'||key=='/')&&(z==0)){
+z++;
+a=key;
+lcd.print(a);
+}
+}//Fim do código

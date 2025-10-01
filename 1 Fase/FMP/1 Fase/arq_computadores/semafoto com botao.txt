@@ -1,0 +1,43 @@
+int vermelho = 16;
+int amarelo  = 5;
+int verde    = 4;
+int botao    = 13;
+
+bool estadoBotaoAnterior = HIGH;  // Estado anterior do botão
+bool ativado = false;             // Se o modo "botão pressionado" está ativo
+
+void setup() {
+  pinMode(vermelho, OUTPUT);
+  pinMode(amarelo, OUTPUT);
+  pinMode(verde, OUTPUT);
+  pinMode(botao, INPUT_PULLUP); // Pull-up interno
+}
+
+void loop() {
+  bool estadoAtual = digitalRead(botao);
+
+  if (estadoBotaoAnterior == HIGH && estadoAtual == LOW) {
+    // Botão foi pressionado (transição)
+    ativado = true;
+
+    // Etapa 1: Amarelo aceso por 2 segundos
+    digitalWrite(vermelho, LOW);
+    digitalWrite(verde, LOW);
+    digitalWrite(amarelo, HIGH);
+    delay(2000);
+
+    // Etapa 2: Vermelho aceso
+    digitalWrite(amarelo, LOW);
+    digitalWrite(vermelho, HIGH);
+  }
+
+  if (estadoAtual == HIGH && ativado) {
+    // Botão foi solto, voltamos ao modo padrão
+    ativado = false;
+    digitalWrite(vermelho, LOW);
+    digitalWrite(amarelo, LOW);
+    digitalWrite(verde, HIGH);
+  }
+
+  estadoBotaoAnterior = estadoAtual;
+}
