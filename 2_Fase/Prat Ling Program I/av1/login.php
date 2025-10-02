@@ -1,11 +1,26 @@
 <?php
 session_start();
+
+// Define o usuário e senha válidos. Em um sistema real, isso viria de um banco de dados.
+$usuario_valido = 'admin';
+$senha_valida = '1234'; // Defina a senha que desejar
+
+$erro = '';
+
+// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST['usuario'] ?? '';
-    if (!empty($usuario)) {
-        $_SESSION['usuario'] = $usuario;
+    $usuario_digitado = $_POST['usuario'] ?? '';
+    $senha_digitada = $_POST['senha'] ?? '';
+
+    // Valida o usuário e a senha
+    if ($usuario_digitado === $usuario_valido && $senha_digitada === $senha_valida) {
+        // Se estiverem corretos, armazena o usuário na sessão e redireciona
+        $_SESSION['usuario'] = $usuario_digitado;
         header("Location: index.php");
         exit;
+    } else {
+        // Se estiverem errados, define a mensagem de erro
+        $erro = "Usuário ou senha inválidos!";
     }
 }
 ?>
@@ -22,10 +37,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="card shadow-lg p-4" style="width: 22rem;">
             <div class="card-body">
                 <h1 class="card-title text-center mb-4">Login</h1>
+                
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo htmlspecialchars($erro); ?>
+                    </div>
+                <?php endif; ?>
+
                 <form action="login.php" method="post">
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Nome de Usuário</label>
                         <input type="text" class="form-control" id="usuario" name="usuario" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Entrar</button>
