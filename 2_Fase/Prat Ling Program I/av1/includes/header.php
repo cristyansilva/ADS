@@ -1,6 +1,5 @@
 <?php
-// Este arquivo será incluído em todas as páginas protegidas
-require_once __DIR__ . '/auth.php'; // Usar __DIR__ garante que o caminho funcione de qualquer lugar
+require_once __DIR__ . '/auth.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

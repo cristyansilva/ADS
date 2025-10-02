@@ -1,25 +1,20 @@
 <?php
 session_start();
 
-// Define o usuário e senha válidos. Em um sistema real, isso viria de um banco de dados.
 $usuario_valido = 'admin';
-$senha_valida = '1234'; // Defina a senha que desejar
+$senha_valida = '1234'; 
 
 $erro = '';
 
-// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario_digitado = $_POST['usuario'] ?? '';
     $senha_digitada = $_POST['senha'] ?? '';
 
-    // Valida o usuário e a senha
     if ($usuario_digitado === $usuario_valido && $senha_digitada === $senha_valida) {
-        // Se estiverem corretos, armazena o usuário na sessão e redireciona
         $_SESSION['usuario'] = $usuario_digitado;
         header("Location: index.php");
         exit;
     } else {
-        // Se estiverem errados, define a mensagem de erro
         $erro = "Usuário ou senha inválidos!";
     }
 }
