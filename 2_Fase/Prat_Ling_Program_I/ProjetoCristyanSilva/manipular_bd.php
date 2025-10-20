@@ -13,14 +13,16 @@ require_once 'conexao.php';
 </head>
 <body>
     <div class="container mt-5">
+
         <?php
         if (isset($_POST['cadastrar'])) {
+            $aluno = $conexao->real_escape_string($_POST['aluno']);
             $nome_curso = $conexao->real_escape_string($_POST['nome_curso']);
             $codigo_curso = $conexao->real_escape_string($_POST['codigo_curso']);
             $duracao = (int)$_POST['duracao'];
             $descricao = $conexao->real_escape_string($_POST['descricao']);
             
-            $sql = "INSERT INTO cursos (nome_do_curso, codigo_do_curso, duracao, descricao) VALUES ('$nome_curso', '$codigo_curso', $duracao, '$descricao')";
+            $sql = "INSERT INTO cursos (aluno, nome_do_curso, codigo_do_curso, duracao, descricao) VALUES ('$aluno', '$nome_curso', '$codigo_curso', $duracao, '$descricao')";
 
             if ($conexao->query($sql) === TRUE) {
                 echo '<div class="alert alert-success" role="alert">Curso cadastrado com sucesso!</div>';
@@ -29,18 +31,26 @@ require_once 'conexao.php';
             }
         }
 
-        if (isset($_GET['excluir_id'])) {
-            $id_para_excluir = (int)$_GET['excluir_id'];
-            $sql_excluir = "DELETE FROM cursos WHERE id = $id_para_excluir";
-
-            if ($conexao->query($sql_excluir) === TRUE) {
-                echo '<div class="alert alert-warning" role="alert">Curso excluído com sucesso!</div>';
+        if (isset($_POST['excluir_por_nome'])) {
+            $nome_para_excluir = $conexao->real_escape_string($_POST['nome_curso_excluir']);
+            
+            if (!empty($nome_para_excluir)) {
+                $sql_excluir = "DELETE FROM cursos WHERE nome_do_curso = '$nome_para_excluir'";
+                
+                if ($conexao->query($sql_excluir) === TRUE) {
+                    if ($conexao->affected_rows > 0) {
+                        echo '<div class="alert alert-warning" role="alert">Curso "<strong>' . htmlspecialchars($nome_para_excluir) . '</strong>" excluído com sucesso!</div>';
+                    } else {
+                        echo '<div class="alert alert-danger" role="alert">Nenhum curso encontrado com o nome "<strong>' . htmlspecialchars($nome_para_excluir) . '</strong>".</div>';
+                    }
+                } else {
+                    echo '<div class="alert alert-danger" role="alert">Erro ao executar a exclusão: ' . $conexao->error . '</div>';
+                }
             } else {
-                echo '<div class="alert alert-danger" role="alert">Erro ao excluir o curso: ' . $conexao->error . '</div>';
+                echo '<div class="alert alert-info" role="alert">Por favor, digite o nome de um curso para excluir.</div>';
             }
         }
-
-        ?>
+        ?>      
 
         <div class="card shadow-sm">
             <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
@@ -64,7 +74,6 @@ require_once 'conexao.php';
                         echo '<th scope="col">Código</th>';
                         echo '<th scope="col">Duração</th>';
                         echo '<th scope="col">Descrição</th>';
-                        echo '<th scope="col" class="text-center">Ação</th>';
                         echo '</tr>';
                         echo '</thead>';
                         echo '<tbody>';
@@ -76,7 +85,6 @@ require_once 'conexao.php';
                             echo '<td>' . htmlspecialchars($curso['codigo_do_curso']) . '</td>';
                             echo '<td>' . htmlspecialchars($curso['duracao']) . ' meses</td>';
                             echo '<td>' . htmlspecialchars($curso['descricao']) . '</td>';
-                            echo '<td class="text-center"><a href="manipular_bd.php?excluir_id=' . $curso['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Tem certeza que deseja excluir este curso?\');"><i class="bi bi-trash"></i></a></td>';
                             echo '</tr>';
                         }
                         echo '</tbody>';
@@ -97,6 +105,20 @@ require_once 'conexao.php';
                 <a href="index.html" class="btn btn-primary">
                     <i class="bi bi-arrow-left-circle"></i> Voltar para o Cadastro
                 </a>
+            </div>
+        </div>
+         <div class="card shadow-sm mb-4">
+            <div class="card-header bg-danger text-white">
+                <h3 class="h5 mb-0"><i class="bi bi-trash3"></i> Excluir Curso</h3>
+            </div>
+            <div class="card-body">
+                <form action="manipular_bd.php" method="POST">
+                    <div class="mb-3">
+                        <label for="nome_curso_excluir" class="form-label">Digite o nome exato do curso que deseja excluir:</label>
+                        <input type="text" class="form-control" name="nome_curso_excluir" id="nome_curso_excluir" placeholder="Ex: Engenharia de Software" required>
+                    </div>
+                    <button type="submit" name="excluir_por_nome" class="btn btn-danger w-100">Excluir Curso</button>
+                </form>
             </div>
         </div>
     </div>
