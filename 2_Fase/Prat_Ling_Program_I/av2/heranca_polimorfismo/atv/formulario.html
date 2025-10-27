@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Administrador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fb;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔐 Cadastrar Administrador</h1>
+    <form action="testeHeranca.php" method="POST">
+        <label for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Ex: Ana Silva">
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required placeholder="ana@empresa.com">
+
+        <label for="nivel">Nível de acesso (1 a 10):</label>
+        <input type="number" id="nivel" name="nivel" min="1" max="10" value="5" required>
+
+        <button type="submit">Criar Administrador</button>
+    </form>
+</div>
+
+</body>
+</html>

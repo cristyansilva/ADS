@@ -1,0 +1,10 @@
+CREATE TABLE funcionarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    salario_base DECIMAL(10, 2) NOT NULL,
+    -- Coluna para diferenciar o tipo de funcionário
+    tipo VARCHAR(50) NOT NULL,
+    -- Colunas específicas para cada tipo
+    bonus_gerencia DECIMAL(10, 2) NULL, -- Apenas para Gerentes
+    linguagem_principal VARCHAR(50) NULL -- Apenas para Programadores
+);
