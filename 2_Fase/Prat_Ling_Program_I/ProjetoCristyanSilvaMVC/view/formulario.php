@@ -1,3 +1,6 @@
+<?php
+// Arquivo: view/formulario.php
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,15 +16,11 @@
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                 <h1 class="h4 mb-0"><i class="bi bi-journal-plus"></i> Painel de Cadastro de Cursos</h1>
-                <span class="badge bg-light text-primary fs-6">
-                    <i class="bi bi-person-circle"></i> Aluno: Cristyan
-                </span>
-            </div>
+                </div>
             <div class="card-body">
-                <form action="manipular_bd.php" method="POST">
+                
+                <form action="../index.php?acao=cadastrar" method="POST">
                     
-                    <input type="hidden" name="aluno" value="Cristyan">
-
                     <div class="mb-3">
                         <label for="nome_curso" class="form-label">Nome do Curso:</label>
                         <input type="text" class="form-control" id="nome_curso" name="nome_curso" required>
@@ -48,7 +47,7 @@
                 </form>
             </div>
             <div class="card-footer text-center">
-                 <a href="manipular_bd.php" class="btn btn-secondary btn-sm">
+                 <a href="../index.php?acao=listar" class="btn btn-secondary btn-sm">
                     <i class="bi bi-list-ul"></i> Ver Cursos Cadastrados
                  </a>
             </div>
