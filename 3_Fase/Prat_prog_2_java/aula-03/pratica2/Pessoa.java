@@ -1,25 +1,21 @@
-public class pessoa {
+public class Pessoa {
     //atributos
     private String nome;
     private int idade;
 
     //contronstrutor
-    public Pessoa(String n, int i) {
-        setNome(n);
-        setIdade(i);
+    public Pessoa(String nome, int idade) {
+        nome = nome;
+        idade = idade;
     }
 
     //metodos
-    public void setNome(String n) {
-        nome = n;
+    public void setNome(String novoNome) {
+        nome = novoNome;
     }
 
     public String getNome() {
         return nome;
-    }
-
-    public void setIdade(int id) {
-        idade = id;
     }
 
     public int getIdade() {
@@ -29,8 +25,9 @@ public class pessoa {
     public void fazAniversario(){
         idade = idade + 1;
     }
+    
     public void exibeDados(){
         System.out.println ("Nome: " + getNome());
-        System.out.println ("Idade: "+ getIdade())
+        System.out.println ("Idade: "+ getIdade());
     }
 }

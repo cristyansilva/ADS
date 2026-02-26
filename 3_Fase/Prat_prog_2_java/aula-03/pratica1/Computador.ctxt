@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Computador
+comment1.params=processador\ capacidade\ ram\ hd
+comment1.target=Computador(java.lang.String,\ double,\ int,\ int)
+comment2.params=
+comment2.target=double\ getCapacidadeProcessador()
+comment3.params=capacidadeProcessador
+comment3.target=void\ setCapacidadeProcessador(double)
+numComments=4

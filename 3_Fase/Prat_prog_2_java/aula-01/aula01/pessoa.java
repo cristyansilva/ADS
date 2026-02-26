@@ -4,22 +4,22 @@ public class pessoa {
     private int idade;
 
     //contronstrutor
-    public Pessoa(String n, int i) {
-        setNome(n);
-        setIdade(i);
+    public pessoa(String nome, int idade) {
+        this.setNome(nome);
+        this.setIdade(idade);
     }
 
     //metodos
-    public void setNome(String n) {
-        nome = n;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setIdade(int id) {
-        idade = id;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public int getIdade() {
@@ -29,8 +29,9 @@ public class pessoa {
     public void fazAniversario(){
         idade = idade + 1;
     }
+    
     public void exibeDados(){
         System.out.println ("Nome: " + getNome());
-        System.out.println ("Idade: "+ getIdade())
+        System.out.println ("Idade: "+ getIdade());
     }
 }

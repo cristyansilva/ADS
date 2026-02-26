@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Computador
+comment1.params=marca\ modelo\ memoriaRAMGB
+comment1.target=Computador(java.lang.String,\ java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getMarca()
+comment3.params=marca
+comment3.target=void\ setMarca(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getModelo()
+comment5.params=modelo
+comment5.target=void\ setModelo(java.lang.String)
+comment6.params=
+comment6.target=int\ getMemoriaRAMGB()
+comment7.params=memoriaRAMGB
+comment7.target=void\ setMemoriaRAMGB(int)
+comment8.params=
+comment8.target=void\ exibeDados()
+numComments=9
