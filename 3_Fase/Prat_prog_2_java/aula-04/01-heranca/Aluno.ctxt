@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Aluno
+comment1.params=mat\ nom\ log\ sen
+comment1.target=Aluno(int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=double\ getNotaGA()
+comment3.params=not
+comment3.target=void\ setNotaGA(double)
+comment4.params=
+comment4.target=double\ getNotaGB()
+comment5.params=not
+comment5.target=void\ setNotaGB(double)
+numComments=6

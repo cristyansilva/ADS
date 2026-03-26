@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Teste07e08
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=num
+comment2.target=void\ exibirMensagem(int)
+comment3.params=n1\ n2\ n3
+comment3.target=int\ retornarMenor(int,\ int,\ int)
+numComments=4

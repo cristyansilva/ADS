@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Teclado
+comment0.text=\ Classe\ que\ permite\ fazer\ leitura\ de\ dados\ do\ teclado,\ com\ mtodos\ estticos.\r\n\ \ Iso\ significa\ que\ no\ h\ necessidade\ de\ instanciar\ um\ objeto\ para\ invocar\ os\ mtodos.\r\n\ \ Sintaxe\ p/\ chamada\:\ <nome_da_classe>.<nome_do_mtodo>(<mensagem\ de\ solicitao>)\r\n\ \ Exemplo\ de\ chamada\:\ Teclado.leInt("Digite\ um\ nmero\ inteiro")\r\n
+comment1.params=msg
+comment1.target=int\ leInt(java.lang.String)
+comment1.text=\r\n\ \ \ \ \ \ \ \ L\ um\ inteiro,\ exibindo\ na\ tela\ uma\ mensagem\ de\ solicitao.\r\n\ \ \ \ \ \ \ \ @return\ int\r\n
+comment2.params=msg
+comment2.target=double\ leDouble(java.lang.String)
+comment2.text=\r\n\ \ \ \ \ \ \ \ L\ um\ double,\ exibindo\ na\ tela\ uma\ mensagem\ de\ solicitao.\r\n\ \ \ \ \ \ \ \ @return\ double\r\n
+comment3.params=msg
+comment3.target=java.lang.String\ leString(java.lang.String)
+comment3.text=\r\n\ \ \ \ \ \ \ \ L\ um\ string,\ exibindo\ na\ tela\ uma\ mensagem\ de\ solicitao.\r\n\ \ \ \ \ \ \ \ @return\ String\r\n
+comment4.params=msg
+comment4.target=java.lang.Character\ leChar(java.lang.String)
+comment4.text=\r\n\ \ \ \ \ \ \ \ L\ um\ caractere\ exibindo\ na\ tela\ uma\ mensagem\ de\ solicitao.\r\n\ \ \ \ \ \ \ \ @return\ Char\r\n
+numComments=5

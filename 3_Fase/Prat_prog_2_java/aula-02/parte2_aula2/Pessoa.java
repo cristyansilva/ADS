@@ -27,7 +27,7 @@ public class Pessoa{
     
     public void exibeInformacoes() {
         System.out.println("Nome: " + nome);
-        System.out.println("Data de Nascimento: ")
+        System.out.println("Data de Nascimento: ");
         dataNascimento.exibirData();
     }
 }
