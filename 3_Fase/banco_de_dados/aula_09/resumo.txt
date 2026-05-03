@@ -1,0 +1,18 @@
+ - Diferença entre update_one e delete_one:
+O update_one() busca o primeiro documento que atende aos critérios do filtro e altera seus campos (geralmente usando o operador $set), mantendo o restante do documento intacto. Já o delete_one() localiza o primeiro documento que satisfaz o filtro e o remove permanentemente da coleção.
+
+ - Funcionamento dos Filtros:
+Os filtros funcionam como dicionários de busca. Por exemplo, {"matricula": 12345} diz ao MongoDB para agir apenas sobre o registro onde esse par chave-valor é exato. Nas operações de edição e exclusão, o filtro é o primeiro argumento e garante que não alteremos ou deletemos dados indesejados.
+
+Cenários Reais:
+
+ - Update: Atualizar o status de um pedido em um e-commerce de "processando" para "enviado".
+
+ - Delete: Remover um usuário que solicitou a exclusão de sua conta em conformidade com a LGPD.
+
+ - Personalizações Implementadas:
+Utilizei meu nome completo no campo nome, minha matrícula fictícia no campo matricula e o nome do banco de dados foi configurado como db_cristyan_silva.
+
+ - Dificuldades:
+Tive dificuldade inicial reconfigurar o dotenv, preciso lembrar de sempre instanciar uma .venv para cada projeto assim instalo as dependencias direto nele e nao preciso ficar tentando lembrar
+onde foi que instalei.

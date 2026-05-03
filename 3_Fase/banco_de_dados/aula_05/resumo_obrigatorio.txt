@@ -1,0 +1,13 @@
+Função das Pastas:
+
+    -config/: Centraliza as configurações de infraestrutura e a conexão com o banco de dados.
+
+    -models/: Define a estrutura e o formato dos dados (como a classe Projeto).
+
+    -src/: Guarda o script principal (main.py) que executa e coordena a aplicação.
+
+Por que usar variáveis de ambiente:
+
+    -Segurança: Oculta credenciais (como a URI e senhas do MongoDB) do código-fonte, evitando vazamentos caso o projeto seja compartilhado no GitHub.
+
+    -Flexibilidade: Permite alterar o ambiente do banco de dados (ex: mudar do Local para a Nuvem) apenas editando o arquivo .env, sem precisar alterar nenhuma linha de código.

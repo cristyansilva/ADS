@@ -1,0 +1,13 @@
+* Função de cada pasta: A pasta connection_options isola toda a responsabilidade de conexão com o banco de dados (configurações, URI, instanciamento do MongoClient), promovendo segurança e fácil manutenção. A pasta repository aplica o padrão de projeto Repository, abstraindo as operações diretas no banco de dados (CRUD) e fornecendo métodos limpos para a aplicação principal usar.
+
+* Como o método find() funciona: Ele realiza uma busca na coleção especificada passando um dicionário de critérios (filtros). Ele não retorna os dados imediatamente, mas sim um objeto Cursor (iterável) apontando para os documentos encontrados no MongoDB, que iteramos para extrair os resultados.
+
+* Quando usar projeção de campos: Utilizamos projeção quando precisamos otimizar a consulta, retornando apenas os campos estritamente necessários para aquela operação. Isso economiza banda de rede e processamento, sendo útil para omitir dados sensíveis (como senhas) ou campos muito longos que não serão usados.
+
+* Como funciona a paginação: É implementada combinando os métodos .skip() e .limit(). O skip() instrui o banco a pular os N primeiros resultados, e o limit() restringe a quantidade máxima de documentos retornados na sequência. Juntos, eles permitem "fatiar" grandes retornos em páginas menores.
+
+* Relação com análise de dados: Consultas bem estruturadas são essenciais na análise de dados. Podemos usar filtros para isolar amostras (ex: vendas de um mês específico), ordenação para criar rankings (Top 10 produtos mais vendidos) e projeção para exportar apenas as colunas relevantes para a construção de um dashboard.
+
+* Personalizações implementadas: O nome do banco de dados foi configurado como db_[seu_sobrenome]. Os documentos inseridos contêm tags personalizadas como projeto_Cristyan Silva, refletindo minha autoria através dos campos autor e da minha matrícula acadêmica ficticia nos valores numéricos.
+
+* Dificuldades encontradas: A principal dificuldade inicial foi entender a ordem de execução dos métodos encadeados no cursor (sort, seguido de skip, seguido de limit) e garantir que a projeção ocultasse corretamente o _id padrão do MongoDB.
