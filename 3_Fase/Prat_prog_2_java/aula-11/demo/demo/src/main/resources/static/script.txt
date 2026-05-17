@@ -1,0 +1,119 @@
+const urlBase = "http://localhost:8080/reservas";
+const urlHospede = `${urlBase}/hospede/1`;
+
+// 1. GET - Buscar e listar as Reservas do Hóspede 1
+async function getReservas() {
+    try {
+        const response = await fetch(urlHospede);
+        if (!response.ok) throw new Error("Erro ao recuperar dados da API");
+        
+        const data = await response.json();
+        document.getElementById("loading").style.display = "none";
+        renderTabela(data);
+    } catch (error) {
+        console.error(error);
+        document.getElementById("loading").innerHTML = `
+            <span class="text-danger fw-bold">Erro de conexão com o Backend ou bloqueio de CORS!</span>
+        `;
+    }
+}
+
+// Renderiza as linhas da tabela dinamicamente
+function renderTabela(reservas) {
+    let tab = "";
+    for (let r of reservas) {
+        let dataFormatada = r.dataReserva ? r.dataReserva.split("-").reverse().join("/") : "Sem data";
+        
+        tab += `
+            <tr>
+                <td><strong>${r.id}</strong></td>
+                <td>${dataFormatada}</td>
+                <td>${r.hospede ? r.hospede.id : 1}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-1" onclick="prepararEdicao(${r.id}, '${r.dataReserva}')">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="deletarReserva(${r.id})">Excluir</button>
+                </td>
+            </tr>
+        `;
+    }
+    document.getElementById("api-data").innerHTML = tab;
+}
+
+// 2. POST / PUT 
+document.getElementById("reserva-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const id = document.getElementById("reserva-id").value;
+    const dataSelecionada = document.getElementById("reserva-data").value;
+
+    // Monta a estrutura do JSON 
+    const payload = {
+        dataReserva: dataSelecionada,
+        hospede: { 
+            id: 1 // Amarra ao ID 1 
+        }
+    };
+
+    let urlTarget = urlBase;
+    let metodoHTTP = "POST";
+
+    if (id) {
+        urlTarget = `${urlBase}/${id}`;
+        metodoHTTP = "PUT";
+        payload.id = parseInt(id);
+    }
+
+    try {
+        const response = await fetch(urlTarget, {
+            method: metodoHTTP,
+            headers: { 
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            limparFormulario();
+            getReservas(); // Recarrega a tabela com os dados atualizados do banco
+        } else {
+            const erroTxt = await response.text();
+            alert("Erro na validação do backend: " + erroTxt);
+        }
+    } catch (error) {
+        alert("Não foi possível salvar as alterações. Verifique o console.");
+    }
+});
+
+// 3. DELETE - Remover registro de reserva por ID
+async function deletarReserva(id) {
+    if (confirm(`Confirmar exclusão da Reserva ID: ${id}? (Método HTTP: DELETE)`)) {
+        try {
+            const response = await fetch(`${urlBase}/${id}`, { 
+                method: "DELETE" 
+            });
+            
+            if (response.ok) {
+                getReservas(); // Atualiza a listagem após exclusão
+            } else {
+                alert("Erro ao tentar deletar registro.");
+            }
+        } catch (error) {
+            alert("Erro de comunicação com o servidor.");
+        }
+    }
+}
+
+function prepararEdicao(id, dataReserva) {
+    document.getElementById("reserva-id").value = id;
+    document.getElementById("reserva-data").value = dataReserva;
+    document.getElementById("form-title").innerText = `Modificando Reserva ID: ${id} (Modo PUT)`;
+    document.getElementById("btn-cancelar").classList.remove("d-none");
+}
+
+function limparFormulario() {
+    document.getElementById("reserva-id").value = "";
+    document.getElementById("reserva-data").value = "";
+    document.getElementById("form-title").innerText = "Nova Reserva / Ajustar Reserva";
+    document.getElementById("btn-cancelar").classList.add("d-none");
+}
+getReservas();

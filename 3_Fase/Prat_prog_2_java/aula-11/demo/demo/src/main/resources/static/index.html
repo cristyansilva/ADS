@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas - CRUD Hospede 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5" style="max-width: 800px;">
+        
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0" id="form-title">Nova Reserva / Ajustar Reserva</h5>
+            </div>
+            <div class="card-body">
+                <form id="reserva-form">
+                    <input type="hidden" id="reserva-id">
+                    
+                    <div class="mb-3">
+                        <label for="reserva-data" class="form-label">Data da Reserva (data_reserva)</label>
+                        <input type="date" class="form-control" id="reserva-data" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar Reserva (POST/PUT)</button>
+                    <button type="button" class="btn btn-secondary d-none" id="btn-cancelar" onclick="limparFormulario()">Cancelar Edição</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">Reservas Ativas - Cristyan Silva (Hóspede ID: 1)</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID Reserva</th>
+                            <th>Data da Reserva</th>
+                            <th>ID Hóspede</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="api-data"></tbody>
+                </table>
+                
+                <div id="loading" class="text-center my-3">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Carregando dados...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
