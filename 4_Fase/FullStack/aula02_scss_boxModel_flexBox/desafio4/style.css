@@ -1,0 +1,36 @@
+body, html {
+  margin: 0;
+  height: 100%;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cabecalho, .rodape {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.conteudo-principal {
+  display: flex;
+  flex-grow: 1; 
+  gap: 20px;
+  padding: 20px;
+}
+
+.conteudo {
+  flex: 3; /* Ocupa 3 partes do espaço (coluna maior) */
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.sidebar {
+  flex: 1; /* Ocupa 1 parte do espaço (coluna menor) */
+  background-color: #e2e2e2;
+  padding: 20px;
+}

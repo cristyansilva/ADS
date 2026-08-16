@@ -1,0 +1,14 @@
+.galeria{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.galeria img{
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+.galeria img:hover{
+    transform: scale(1.05s);
+    opacity: 0.9;
+}

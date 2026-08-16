@@ -1,0 +1,21 @@
+ul{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+/* Estilo base do link */
+.menu a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease; /* Deixa a troca de cor suave */
+}
+
+/* Efeito ao passar o mouse */
+.menu a:hover {
+  color: #007bff; /* Mudar para azul */
+  text-decoration: underline;
+}
