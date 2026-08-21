@@ -1,0 +1,173 @@
+{
+    "id": "5764682519698016825",
+    "type": "DELIVERY",
+    "sourceAppId": "5764607736115889914",
+    "displayId": "5",
+    "createdAt": "2026-08-15T19:30:58.000",
+    "orderTiming": "INSTANT",
+    "preparationStartDateTime": "2026-08-15T19:30:58.000",
+    "merchant": {
+        "id": "UMAMI_IZAKAYA_-_TUBARAO_13042026_101",
+        "name": "Sushi a Jato"
+    },
+    "items": [
+        {
+            "id": "17",
+            "index": 1,
+            "name": "Combo Crocante - 52 Peças - Mais Vendido",
+            "externalCode": "17",
+            "unit": "UN",
+            "quantity": 1,
+            "unitPrice": {
+                "value": 94,
+                "currency": "BRL"
+            },
+            "totalPrice": {
+                "value": 94,
+                "currency": "BRL"
+            },
+            "options": [],
+            "specialInstructions": ""
+        }
+    ],
+    "otherFees": [
+        {
+            "name": "DELIVERY_FEE",
+            "type": "DELIVERY_FEE",
+            "receivedBy": "MERCHANT",
+            "price": {
+                "value": 9.99,
+                "currency": "BRL"
+            }
+        },
+        {
+            "name": "SERVICE_FEE",
+            "type": "SERVICE_FEE",
+            "receivedBy": "MARKETPLACE",
+            "price": {
+                "value": 3.52,
+                "currency": "BRL"
+            }
+        }
+    ],
+    "discounts": [
+        {
+            "amount": {
+                "value": 9.99,
+                "currency": "BRL"
+            },
+            "target": "DELIVERY_FEE",
+            "targetId": "5764682519698016825",
+            "sponsorshipValues": [
+                {
+                    "name": "MARKETPLACE",
+                    "amount": {
+                        "value": 0,
+                        "currency": "BRL"
+                    }
+                },
+                {
+                    "name": "MERCHANT",
+                    "amount": {
+                        "value": 9.99,
+                        "currency": "BRL"
+                    }
+                }
+            ]
+        },
+        {
+            "amount": {
+                "value": 30,
+                "currency": "BRL"
+            },
+            "target": "CART",
+            "targetId": "5764682519698016825",
+            "sponsorshipValues": [
+                {
+                    "name": "MARKETPLACE",
+                    "amount": {
+                        "value": 30,
+                        "currency": "BRL"
+                    }
+                },
+                {
+                    "name": "MERCHANT",
+                    "amount": {
+                        "value": 0,
+                        "currency": "BRL"
+                    }
+                }
+            ]
+        }
+    ],
+    "total": {
+        "itemsPrice": {
+            "value": 94,
+            "currency": "BRL"
+        },
+        "otherFees": {
+            "value": 13.51,
+            "currency": "BRL"
+        },
+        "discount": {
+            "value": 39.99,
+            "currency": "BRL"
+        },
+        "orderAmount": {
+            "value": 67.52,
+            "currency": "BRL"
+        }
+    },
+    "payments": {
+        "pending": 0,
+        "prepaid": 67.52,
+        "methods": [
+            {
+                "value": 67.52,
+                "currency": "BRL",
+                "type": "PREPAID",
+                "method": "CREDIT_DEBIT",
+                "brand": "",
+                "methodInfo": ""
+            },
+            {
+                "value": 30,
+                "currency": "BRL",
+                "type": "PREPAID",
+                "method": "COUPON",
+                "brand": "",
+                "methodInfo": ""
+            }
+        ]
+    },
+    "customer": {
+        "id": "369435909471468",
+        "name": "Gustavo",
+        "phone": {
+            "number": "04823980721",
+            "extension": ""
+        },
+        "ordersCountOnMerchant": 0
+    },
+    "delivery": {
+        "deliveredBy": "MERCHANT",
+        "deliveryAddress": {
+            "country": "BR",
+            "state": "SC",
+            "city": "Tubarão",
+            "district": "Humaitá",
+            "street": "Avenida Pres . Getúlio Vargas",
+            "number": "2749",
+            "complement": "",
+            "reference": "escritório maregy turismo",
+            "formattedAddress": "Avenida Pres . Getúlio Vargas, 2749 - Humaitá, Tubarão - SC",
+            "postalCode": "88704-535",
+            "coordinates": {
+                "latitude": -28.47525117,
+                "longitude": -49.00173003
+            }
+        },
+        "estimatedDeliveryDateTime": "2026-08-15T20:41:03.000"
+    },
+    "extraInfo": "localizador:89606279; precisa de talhares: sim"
+}
